@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.mapper.EditMapper">
+
+<select id="getdiaryname" parameterType="string" resultType="kr.spring.entity.day_diary">
+   select * from day_diary where user_id = #{user_id} order by diary_num
+   
+   </select>
+
+<insert id="upload" parameterType="map">
+   
+   INSERT INTO day_board (bd_title, bd_content, user_id, bd_category, bd_diary, diary_idx) 
+VALUES (#{title}, #{filename}, #{userid}, #{category}, #{diary}, (SELECT diary_idx FROM day_diary WHERE diary_name = #{diary}));
+   
+   </insert>
+   
+   <insert id="temp_upload" parameterType="kr.spring.entity.day_temp">
+      insert into day_temp (user_id, temp_content, temp_title)
+      values (#{user_id}, #{temp_content}, #{temp_title})
+   
+   </insert>
+   
+   <select id="get_temp_title" parameterType="kr.spring.entity.day_temp" resultType="kr.spring.entity.day_temp">
+      
+      select * from day_temp where user_id = #{user_id}
+   
+   </select>
+   
+   <delete id="delete_temp" parameterType="int">
+   
+    delete from day_temp where temp_idx = #{temp_idx}
+   </delete>
+   
+   <select id="get_temp_content" parameterType="int" resultType="string">
+      select temp_content 
+      from day_temp
+      where temp_idx = #{temp_idx}
+      
+   </select>
+   
+   <select id="getsticker" parameterType="string" resultType="kr.spring.entity.day_sticker">
+   select sticker_url from day_sticker where user_id = #{user_id} or user_id = 'admin'
+   </select>
+   </mapper>

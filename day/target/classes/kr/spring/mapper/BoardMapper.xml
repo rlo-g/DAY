@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.mapper.BoardMapper">
+   
+   
+   
+   <select id="getLifeList"  resultType="kr.spring.entity.day_board">
+   SELECT A.*, B.user_nick FROM day_board A JOIN day_user B ON A.user_id = B.user_id WHERE A.bd_category = 'Life' ORDER BY A.bd_idx DESC LIMIT 21
+   </select>
+   <select id="gettravelList"  resultType="kr.spring.entity.day_board">
+   SELECT A.*, B.user_nick FROM day_board A JOIN day_user B ON A.user_id = B.user_id WHERE A.bd_category = 'Travel' ORDER BY A.bd_idx DESC LIMIT 21
+   </select>
+   <select id="getcultureList"  resultType="kr.spring.entity.day_board">
+   SELECT A.*, B.user_nick FROM day_board A JOIN day_user B ON A.user_id = B.user_id WHERE A.bd_category = 'Culture' ORDER BY A.bd_idx DESC LIMIT 21
+   </select>
+   <select id="getitList"  resultType="kr.spring.entity.day_board">
+   SELECT A.*, B.user_nick FROM day_board A JOIN day_user B ON A.user_id = B.user_id WHERE A.bd_category = 'IT' ORDER BY A.bd_idx DESC LIMIT 21
+   </select>
+   <select id="getsportList"  resultType="kr.spring.entity.day_board">
+   SELECT A.*, B.user_nick FROM day_board A JOIN day_user B ON A.user_id = B.user_id WHERE A.bd_category = 'Sport' ORDER BY A.bd_idx DESC LIMIT 21
+   </select>
+   <select id="getissueList"  resultType="kr.spring.entity.day_board">
+   SELECT A.*, B.user_nick FROM day_board A JOIN day_user B ON A.user_id = B.user_id WHERE A.bd_category = 'Issue' ORDER BY A.bd_idx DESC LIMIT 21 </select>
+   
+   <select id="getBoard" parameterType="int" resultType="kr.spring.entity.day_board">
+   SELECT * FROM day_board WHERE diary_idx = #{idx}
+   </select>
+   
+ <select id="getmodal" resultType="kr.spring.entity.day_board">
+      SELECT A.*, B.user_nick FROM day_board A JOIN day_user B ON A.user_id = B.user_id WHERE diary_idx = (select diary_idx from day_board where bd_idx= #{idx})
+   </select>
+   
+   <update id="upLike" parameterType="int">
+        UPDATE day_board
+        SET bd_views = bd_views + 1
+        WHERE bd_idx=#{idx}
+    </update>
+    
+   <update id="downLike" parameterType="int">
+        UPDATE day_board
+        SET bd_views = bd_views - 1
+        WHERE bd_idx=#{idx}
+    </update>
+    
+    <select id="like" parameterType="int" resultType="int">
+        SELECT bd_views
+        FROM day_board
+        WHERE bd_idx=#{idx}
+    </select>
+    
+    <select id="best_board"  resultType="kr.spring.entity.day_board">
+      SELECT A.*, B.user_nick 
+   FROM day_board A 
+   JOIN day_user B ON A.user_id = B.user_id 
+   WHERE A.created_at >= NOW() - INTERVAL 1 MONTH
+   ORDER BY A.bd_views DESC 
+   LIMIT 6
+   </select>
+   
+<select id="followboard" parameterType="map" resultType="kr.spring.entity.day_board">
+   SELECT db.*, du.user_nick
+   FROM day_follow AS df
+   JOIN day_board AS db ON df.followee = db.user_id
+   JOIN day_user AS du ON df.followee = du.user_id
+   WHERE df.follower = #{userid}
+   order by bd_idx desc
+   LIMIT #{maxpage} OFFSET #{offset}
+  </select>
+</mapper>

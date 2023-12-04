@@ -1,0 +1,521 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100");
+@import url("https://fonts.googleapis.com/css?family=Heebo:800");
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+.nanumgothic * {
+ font-family: 'Nanum Gothic', sans-serif;
+}
+@font-face {
+    font-family: 'UhBeeZZIBA-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/UhBeeZZIBA-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'insungitCutelivelyjisu';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/insungitCutelivelyjisu.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+* {
+    font-family: 'insungitCutelivelyjisu';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.parent {
+  width: 70rem;
+  height: 48rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto auto;
+  overflow: hidden;
+  position: absolute;
+  border-radius: 16px;
+  -webkit-box-shadow: 0 0 88px 5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 88px 5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 28px 1px rgb(175 175 175 / 50%);
+
+}
+
+svg {
+  position: absolute;
+  z-index: 1;
+  width: 600px;
+  height: 300px;
+}
+
+button {
+  position: absolute;
+  z-index: 50;
+  width: 40px;
+  overflow: hidden;
+  height: 40px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+button:focus {
+  outline-width: 0;
+}
+
+circle {
+  stroke: #fff;
+  fill: none;
+  transition: 0.3s;
+}
+
+#svg1 circle {
+  transition-timing-function: linear;
+}
+
+#svg2 circle {
+  transition-timing-function: linear;
+}
+
+#Capa_1 {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transform: translate(-7px, -8px);
+}
+
+#Capa_2 {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transform: translate(-9px, -8px);
+}
+
+.right {
+/* 버튼 위치 조절
+   왼쪽 버튼은 left 조절하면 됨
+*/
+  margin-left: 66.5rem;
+  margin-top: 22rem;
+  border: 1px solid #849494;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+.right:hover {
+  background-color: #fff;
+}
+
+.left {
+  margin-left: 0.25%;
+  margin-top: 22rem;
+  border: 1px solid #849494;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+.left:hover {
+  background-color: #fff;
+}
+h4#profile-h4 {
+    margin-top: 16rem;
+    font-size: 26pt;
+}
+.figure > h4 {
+    margin-top: 14rem;
+    font-size: 26pt;
+}
+h4#create {
+    margin-top: 9em;
+}
+h4#head-img {
+    margin-top: 15rem;
+}
+h4#blog-color {
+    margin-top: 15rem;
+}
+h4#profile-img {
+    margin-top: 15rem;
+}
+.circle1 {
+  transition-delay: 0.05s;
+}
+
+.circle2 {
+  transition-delay: 0.1s;
+}
+
+.circle3 {
+  transition-delay: 0.15s;
+}
+
+.circle4 {
+  transition-delay: 0.2s;
+}
+
+.circle5 {
+  transition-delay: 0.25s;
+}
+
+.circle6 {
+  transition-delay: 0.3s;
+}
+
+.circle7 {
+  transition-delay: 0.35s;
+}
+
+.circle8 {
+  transition-delay: 0.4s;
+}
+
+.circle9 {
+  transition-delay: 0.45s;
+}
+
+.circle10 {
+  transition-delay: 0.05s;
+}
+
+.circle11 {
+  transition-delay: 0.1s;
+}
+
+.circle12 {
+  transition-delay: 0.15s;
+}
+
+.circle13 {
+  transition-delay: 0.2s;
+}
+
+.circle14 {
+  transition-delay: 0.25s;
+}
+
+.circle15 {
+  transition-delay: 0.3s;
+}
+
+.circle16 {
+  transition-delay: 0.35s;
+}
+
+.circle17 {
+  transition-delay: 0.4s;
+}
+
+.circle18 {
+  transition-delay: 0.45s;
+}
+
+
+.slide1, .slide2,.slide3, .slide6  {
+   background-color: white;
+   background-image: url(../images/bg.jpeg);
+   background-size: cover;
+   }
+.slide4, .slide5  {
+   background-color: white;
+    background-image: url(../images/diary.png);
+   }
+
+
+.slider {
+  position: absolute;
+  width: 400%;
+  height: 100%;
+  background: #8f8d8d5c;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.slide1, .slide2, .slide3, .slide4, .slide5, .slide6 {
+  position: absolute;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 100;
+  font-family: "Heebo", sans-serif;
+  text-align: center;
+  width: 25%;
+  height: 100%;
+  z-index: 10;
+  transition: opacity 0.8s ease-in-out;
+  opacity: 0;
+}
+.slide1.up1, .slide2.up1, .slide3.up1, .slide4.up1, .slide5.up1, .slide6.up1{
+  opacity: 1;
+}
+.tran {
+  transform: scale(1.3);
+}
+
+.up1 {
+  z-index: 20;
+}
+
+.up2 {
+  z-index: 40;
+}
+
+.steap {
+  stroke-width: 0;
+}
+
+.streak {
+  stroke-width: 82px;
+}
+
+@media (max-width: 700px) {
+  .parent {
+    margin-left: 1%;
+    width: 70rem;
+    height: 40rem;    
+  }
+}
+.intro{
+	margin-top: 8rem !important;
+}
+.imgDiv {
+    display: block;
+    margin-top: 4em;
+    justify-content: center;
+}
+.inputDiv {
+    display: flex;
+    margin-top: 1em;
+    justify-content: center;
+}
+  .headerDiv {
+     margin-left: 20px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-top: 30px;
+   }
+     .input-btn {
+     margin-right: 10px; /* 사진변경 버튼 오른쪽에 여백 추가 */
+   }
+
+ .input-btn {
+   width: 11rem;
+    height: 2.7rem;
+    background: #fff;
+    border: 0.7px solid rgb(217,217,217);
+   border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11pt;
+    color: black;
+ }
+   .input-btn:hover {
+     background: rgb(77, 77, 77);
+     color: #fff;
+ }
+      #profile{
+      width:150px;
+      height: 150px;
+      border-radius: 70%;
+      object-fit:cover;
+      
+   }
+      #blogHeader{
+      width: 300px;
+      height: 150px;
+      border: solid 0.6px #e5e5e5a3;
+   }
+   .figure{
+      margin-top:4em;
+      font-size:22pt;
+      font-weight:500;
+      color:black;
+   }
+   .figure-end{
+      margin-top:250px;
+      font-size:22pt;
+      font-weight:500;
+      color:black;
+   }
+   .figure-2{
+      margin-top:90px;
+      font-size:22pt;
+      font-weight:500;
+      color:black;
+   }
+   .input-text{
+   font-size: 12pt;
+   border-radius: 30px;
+    width: 384px;
+    height: 48px;
+    margin-top:2em;
+    text-align:center;
+   }
+/*       .input-text:focus {
+     border-color: #fba21d;
+     outline: none;
+     border-radius: 30px;
+
+   } */
+#swatch {
+   margin-top: 4em;
+    width: 138px;
+    background: whitesmoke;
+    box-shadow: 1em 1em 1em rgba(0, 0, 0, .1);
+    display: inline-block;
+}
+#swatch .info{
+  padding: 1em;
+  color:black;
+}
+
+#swatch h1{
+  margin: 0;
+  text-transform: uppercase;
+}
+
+#swatch h2{
+  font-weight: normal;
+  margin: 0;
+}
+
+input[type="color"] {
+   margin-top: 2px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  height: 10em;
+  padding: 0;
+  width: 10em;
+}
+
+*:focus{
+  border-radius: 0;
+  outline: none;
+}
+
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+::-webkit-color-swatch{
+  border: 0;
+  border-radius: 0;
+}
+
+::-moz-color-swatch,
+::-moz-focus-inner{
+  border: 0;
+}
+
+::-moz-focus-inner{
+  padding: 0;
+}
+.button-container-2 {
+  position: relative;
+  width: 170px;
+  height: 55px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5.5vh;
+  overflow: hidden;
+  border: 1px solid #000;
+ font-family: 'insungitCutelivelyjisu';
+  font-weight: 300;
+  transition: 0.5s;
+  letter-spacing: 1px;
+  border-radius: 12px;
+}
+.button-container-2 #makebtn {
+   position:relative;
+  width: 101%;
+  height: 100%;
+  font-family: 'insungitCutelivelyjisu';
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  background: #000;
+  -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
+  mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
+  -webkit-mask-size: 3000% 100%;
+  mask-size: 3000% 100%;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  -webkit-animation: ani2 0.7s steps(29) forwards;
+  animation: ani2 0.7s steps(29) forwards;
+}
+.button-container-2 #makebtn:hover {
+  -webkit-animation: ani 0.7s steps(29) forwards;
+  animation: ani 0.7s steps(29) forwards;
+}
+
+.mas {
+  color: #000;
+  text-align: center;
+  width: 101%;
+  font-family: 'insungitCutelivelyjisu';
+  font-weight: 300;
+  position: absolute;
+  font-size: 17px;
+  margin-top: 16px;
+  overflow: hidden;
+  font-weight: bold;
+}
+@-webkit-keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+@keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+@-webkit-keyframes ani2 {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+@keyframes ani2 {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}

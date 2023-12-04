@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.mapper.DayMapper">
+
+	<select id="login" parameterType="kr.spring.entity.day_user"
+		resultType="kr.spring.entity.day_user">
+		Select * from day_user where
+		user_id = #{user_id} and user_pw=MD5(#{user_pw})
+	</select>
+
+	<insert id="join" parameterType="kr.spring.entity.day_user">
+		INSERT INTO day_user(user_id,
+		user_pw, user_nick, user_email, user_role)
+		VALUES(#{user_id},
+		MD5(#{user_pw}) , #{user_nick}, #{user_email}, #{user_role})
+	</insert>
+
+	<select id="idCheck" parameterType="String"
+		resultType="kr.spring.entity.day_user">
+		SELECT * FROM day_user WHERE user_id = #{user_id}
+	</select>
+
+	<select id="nickCheck" parameterType="String"
+		resultType="kr.spring.entity.day_user">
+		SELECT * FROM day_user WHERE user_nick = #{user_nick}
+	</select>
+
+	<select id="all" parameterType="String"
+		resultType="kr.spring.entity.day_guestbook">
+		SELECT * FROM day_guestbook WHERE user_id = #{id} ORDER BY
+		created_at DESC
+	</select>
+
+	<select id="getBlog" parameterType="String"
+		resultType="kr.spring.entity.day_blog">
+		SELECT * FROM day_blog WHERE user_id=#{user_id}
+	</select>
+
+	<update id="profileUpdate"
+		parameterType="kr.spring.entity.day_blog">
+		UPDATE day_blog
+		SET BLOG_PROFILE = #{blog_profile},
+		BLOG_greetings = #{blog_greetings},
+		BlOG_HEADER = #{blog_header},
+		BLOG_main = #{blog_main},
+		BLOG_SIDEbar =
+		#{blog_sidebar},
+		BLOG_TITLE = #{blog_title}
+		WHERE USER_id = #{user_id}
+	</update>
+	<insert id="visitInsert"
+		parameterType="kr.spring.entity.day_guestbook">
+		INSERT INTO day_guestbook(HOST, guest, user_id,
+		user_nick, gb_content)
+		VALUES(#{host}, #{guest}, #{user_id}, #{user_nick},#{gb_content})
+	</insert>
+
+	<insert id="makeblog" parameterType="kr.spring.entity.day_blog">
+		INSERT INTO
+		day_blog(user_id, user_nick, blog_profile,
+		blog_greetings, blog_header, blog_main, blog_sidebar, blog_title)
+		VALUES(#{user_id},
+		#{user_nick},
+		#{blog_profile}, #{blog_greetings}, #{blog_header},
+		#{blog_main}, #{blog_sidebar}, #{blog_title})
+	</insert>
+
+	<delete id="del" parameterType="int">
+		DELETE FROM day_guestbook WHERE
+		gb_idx=#{gb_idx}
+	</delete>
+	<select id="get" parameterType="int" resultType="String">
+		SELECT user_id
+		FROM day_guestbook WHERE gb_idx=#{gb_idx}
+	</select>
+	<update id="modify" parameterType="kr.spring.entity.day_user">
+		UPDATE day_user SET
+		user_pw=MD5(#{user_pw}), user_nick=#{user_nick},
+		user_email=#{user_email} WHERE user_id=#{user_id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE
+		FROM day_diary
+		WHERE diary_idx = #{idx}
+	</delete>
+	<delete id="delBoard" parameterType="int">
+		DELETE
+		FROM day_board
+		WHERE diary_idx = #{idx}
+	</delete>
+
+	<select id="isUserIdExists"
+		parameterType="kr.spring.entity.day_user" resultType="int">
+		SELECT COUNT(*) FROM day_user WHERE user_id = #{user_id} or
+		user_nick=#{user_nick}
+	</select>
+
+	<select id="findId" parameterType="String"
+		resultType="kr.spring.entity.day_blog">
+
+		SELECT * FROM day_blog WHERE user_id LIKE CONCAT(#{term}, '%') Limit 5
+
+	</select>
+
+	<update id="updatediary"
+		parameterType="kr.spring.entity.day_diary">
+		UPDATE day_diary SET diary_name=#{diary_name}, diary_cover=#{diary_cover}
+		WHERE diary_idx=#{diary_idx}
+	</update>
+
+   <update id="updateboard" parameterType="kr.spring.entity.day_diary">
+      UPDATE day_board SET bd_diary=#{diary_name} WHERE diary_idx=#{diary_idx}
+   </update>
+</mapper>
+

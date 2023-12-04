@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.mapper.StickerMapper">
+
+<insert id="sticker_upload" parameterType="map">
+   insert into day_sticker(user_id, sticker_url, sticker_title) 
+    values(#{userid}, #{filename},#{stickertitle})
+   
+   </insert>
+   
+   <insert id="sticker_temp_upload" parameterType="kr.spring.entity.day_sticker_temp">
+      insert into day_sticker_temp(user_id, sticker_temp_content, sticker_temp_title)
+      value(#{user_id}, #{sticker_temp_content},#{sticker_temp_title})
+   </insert>
+   
+   <select id="get_sticker_temp_title" parameterType="kr.spring.entity.day_sticker_temp" resultType="kr.spring.entity.day_sticker_temp">
+      select * from day_sticker_temp where user_id = #{user_id}
+   
+   
+   </select>
+   <select id="get_sticker_data" parameterType="int" resultType="string">
+      select sticker_temp_content 
+      from day_sticker_temp
+      where sticker_temp_idx = #{sticker_temp_idx}
+      
+   </select>
+   
+   <delete id="delete_temp_Sticker" parameterType="int" >
+      delete from day_sticker_temp where sticker_temp_idx = #{sticker_temp_idx}
+   </delete>
+   </mapper>

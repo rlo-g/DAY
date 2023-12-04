@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.mapper.BlogMapper">
+		<select id="follow" parameterType="String" resultType="kr.spring.entity.day_blog">
+      select* from day_blog where user_id in(select followee from day_follow where follower = #{user_id} )
+   </select>
+	
+	<insert id="subscribe" parameterType="kr.spring.entity.day_follow">
+		INSERT INTO day_follow(follower, followee) 
+		VALUES(#{follower},#{followee})
+	</insert>
+	
+	<delete id="cancle" parameterType="kr.spring.entity.day_follow">
+		DELETE FROM day_follow WHERE follower=#{follower} AND followee=#{followee}
+	</delete>
+	
+	<select id="getfollow" parameterType="kr.spring.entity.day_follow" resultType="kr.spring.entity.day_follow">
+		SELECT * FROM day_follow WHERE follower=#{follower} AND followee=#{followee}
+	</select>
+	
+	<insert id="diaryInSelectKey" parameterType="kr.spring.entity.day_diary">
+		<selectKey keyProperty="diary_num" resultType="kr.spring.entity.day_diary" order="BEFORE">
+			SELECT IFNULL(MAX(diary_num) + 1, 1) AS diary_num
+		    FROM day_diary
+		    WHERE user_id = #{user_id}
+		</selectKey>
+		INSERT INTO day_diary(user_id, diary_name, diary_num, diary_cover)
+	    VALUES(#{user_id},#{diary_name}, #{diary_num}, #{diary_cover})
+	</insert>
+	
+	<select id="getdiary" parameterType="String" resultType="kr.spring.entity.day_diary">
+		SELECT * FROM day_diary WHERE user_id = #{user_id} ORDER BY maked_at DESC;
+	</select>
+	
+	
+	
+</mapper>
+
